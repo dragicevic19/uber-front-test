@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import ValidateForm from 'src/app/helpers/validateform';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -16,7 +17,7 @@ export class SignupComponent implements OnInit{
   eyeIcon: string = "fa-eye-slash";
   signupForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private auth: AuthService) {}
+  constructor(private fb: FormBuilder, private auth: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.signupForm = this.fb.group({
@@ -32,6 +33,15 @@ export class SignupComponent implements OnInit{
     this.isText = !this.isText;
     this.isText ? this.eyeIcon = "fa-eye" : this.eyeIcon = "fa-eye-slash";
     this.isText ? this.type = "text" : this.type = "password";
+  }
+
+  goToLogin(){
+    this.router.navigate(['login'])
+    .then(()=>{
+      // window.location.href = window.location.href
+      // window.location.reload();
+      window.location.href = window.location.protocol + '//' + window.location.host + '/login';
+    })
   }
 
 

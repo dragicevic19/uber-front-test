@@ -51,15 +51,15 @@
                             <small *ngIf="signupForm.controls['repPassword'].dirty && signupForm.hasError('required', 'repPassword')" class="text-danger">*Repeated password is required</small>
 
                             <button (click)="onSingup()" type="submit" class="btn btn-primary btn-block mt-4 w-100">Sign up</button>
-                            <div class="text-center pt-4 text-muted">Already have account? <a id="forget" routerLink="/login">Login</a></div>
+                            <div class="text-center pt-4 text-muted">Already have account? <span id="forget" (click)="goToLogin()">Login</span></div>
                         </form>
                     </div>
-                    <div class="mx-3 my-2 py-2 bordert">
-                        <div class="text-center py-3"> 
-                            <a href="https://www.facebook.com/dialog/oauth?client_id=876191489714176&redirect_uri=https://www.localhost:8080/login" class="px-2"><img src="https://www.dpreview.com/files/p/articles/4698742202/facebook.jpeg" alt="facebook"> </a>
-                            <a href="https://www.google.com" class="px-2"><img src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png" alt="google"> </a>
+                    <!-- <div class="mx-3 my-2 py-2 bordert">
+                        <div class="text-center py-3">
+                            <button (click)="loginWithFacebook()" class="fb-login-btn"><img src="https://www.dpreview.com/files/p/articles/4698742202/facebook.jpeg"></button>
+                            <div id="googleButtonDiv"></div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
