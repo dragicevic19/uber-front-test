@@ -1,28 +1,32 @@
 export class SocialSignInInfoDTO {
-    firstName: string;
-    lastName: string;
-    email: string;
-    picture: string;
 
-    constructor(decodedJwt?: DecodedGoogleJwt, facebookInfo?: FacebookInfo) {
+    firstName: string = '';
+    lastName: string = '';
+    email: string = '';
+    picture: string = '';
+    auth: string = '';
+    jwt: string = '';
+
+    constructor(jwt: string, decodedJwt?: DecodedGoogleJwt, facebookInfo?: FacebookInfo) {
         
         if (decodedJwt) {
             this.firstName = decodedJwt.given_name;
             this.lastName = decodedJwt.family_name;
             this.email = decodedJwt.email;
             this.picture = decodedJwt.picture;
+            this.auth = 'google';
+            this.jwt = jwt;
         }
         else if (facebookInfo) {
             this.firstName = facebookInfo.firstName;
             this.lastName = facebookInfo.lastName;
             this.email = facebookInfo.email;
             this.picture = facebookInfo.photoUrl;
+            this.auth = 'facebook';
+            this.jwt = jwt;
         }
         else {
-            this.firstName = '';
-            this.lastName = '';
-            this.email = '';
-            this.picture = '';
+            throw new Error();
         }
     }
 }
